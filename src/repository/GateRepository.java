@@ -1,5 +1,6 @@
 package repository;
 
+import exception.GateNotFoundException;
 import exception.ParkingFloorNotFoundException;
 import models.Gate;
 import models.ParkingFloor;
@@ -22,8 +23,8 @@ public class GateRepository {
         }
         return gate;
     }
-    public void put(ParkingFloor parkingFloor){
-        parkingFloorMap.put(parkingFloor.getId(), parkingFloor);
-        System.out.println("Parking floor has been added successfully");
+    public void put(Gate gate){
+        gateMap.put(gate.getId(), gate);
+        System.out.println("Gate has been added successfully");
     }
 }

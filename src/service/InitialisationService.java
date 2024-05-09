@@ -21,13 +21,18 @@ public class InitialisationService {
         this.parkingSpotRepository = new ParkingSpotRepository();
         this.parkingLotRepository = new ParkingLotRepository();
     }
+
+
+    /***
+     *  This will create a parking lot with 10 floors, and each floor having 10 spots
+     * @return ParkingLot object
+     */
     public ParkingLot initialise() {
         ParkingLot parkingLot = new ParkingLot();
         parkingLot.setId(1);
         parkingLot.setStatus(Status.ACTIVE);
         parkingLot.setAddress("Road A, City C, State S");
         parkingLot.setCapacity(100);
-
 
         Gate entryGate = new Gate();
         entryGate.setId(1);

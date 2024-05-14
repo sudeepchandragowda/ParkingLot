@@ -17,7 +17,7 @@ public class TicketController {
         IssueTicketResponseDTO issueTicketResponseDTO = new IssueTicketResponseDTO();
         Ticket ticket;
         try {
-            if (issueTicketRequestDTO.getGateId() == null) ||
+            if (issueTicketRequestDTO.getGateId() == 0 ||
             issueTicketRequestDTO.getVehicleType() == null ||
             issueTicketRequestDTO.getVehicleNumber() == null) {
                 throw new InvalidRequestDataException("Ticket generation data is invalid")

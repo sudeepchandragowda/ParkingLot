@@ -4,6 +4,7 @@ import dto.IssueTicketRequestDTO;
 import dto.IssueTicketResponseDTO;
 import dto.ResponseStatus;
 import exception.InvalidRequestDataException;
+import models.Status;
 import models.Ticket;
 import service.TicketService;
 
@@ -27,6 +28,8 @@ public class TicketController {
                     issueTicketRequestDTO.getVehicleColor(),
                     issueTicketRequestDTO.getVehicleMake(),
                     issueTicketRequestDTO.getGateId());
+            issueTicketResponseDTO.setResponseStatus(ResponseStatus.SUCCESS);
+            issueTicketResponseDTO.setTicket(ticket);
         } catch (Exception e) {
             issueTicketResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
             issueTicketResponseDTO.setFailureReason(e.getMessage());

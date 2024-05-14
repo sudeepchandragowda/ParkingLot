@@ -6,7 +6,8 @@ public class IssueTicketRequestDTO {
     private VehicleType vehicleType;
     private String vehicleNumber;
     private String vehicleColor;
-    private Long gateId;
+    private String vehicleMake;
+    private int gateId;
 
     public VehicleType getVehicleType() {
         return vehicleType;
@@ -32,11 +33,20 @@ public class IssueTicketRequestDTO {
         this.vehicleColor = vehicleColor;
     }
 
-    public Long getGateId() {
+
+    public String getVehicleMake() {
+        return vehicleMake;
+    }
+
+    public void setVehicleMake(String vehicleMake) {
+        this.vehicleMake = vehicleMake;
+    }
+
+    public int getGateId() {
         return gateId;
     }
 
-    public void setGateId(Long gateId) {
+    public void setGateId(int gateId) {
         this.gateId = gateId;
     }
 }

@@ -20,9 +20,13 @@ public class TicketController {
             if (issueTicketRequestDTO.getGateId() == 0 ||
             issueTicketRequestDTO.getVehicleType() == null ||
             issueTicketRequestDTO.getVehicleNumber() == null) {
-                throw new InvalidRequestDataException("Ticket generation data is invalid")
+                throw new InvalidRequestDataException("Ticket generation data is invalid");
             }
-            ticket = ticketService.getTicket();
+            ticket = ticketService.getTicket(issueTicketRequestDTO.getVehicleType(),
+                    issueTicketRequestDTO.getVehicleNumber(),
+                    issueTicketRequestDTO.getVehicleColor(),
+                    issueTicketRequestDTO.getVehicleMake(),
+                    issueTicketRequestDTO.getGateId());
         } catch (Exception e) {
             issueTicketResponseDTO.setResponseStatus(ResponseStatus.FAILURE);
             issueTicketResponseDTO.setFailureReason(e.getMessage());

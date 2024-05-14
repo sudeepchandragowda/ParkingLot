@@ -20,15 +20,16 @@ public class TicketService {
         this.gateRepository = gateRepository;
     }
 
-    public Ticket getTicket() {
+    public Ticket getTicket(VehicleType vehicleType, String vehicleNumber, String vehicleColor, String vehicleMake, int gateId) {
         Gate gate = gateRepository.get(gateId);
-        ParkingLot parkingLot = parkingLotRepository.getParkingLotFromGate(gate);
         SpotAllocationStrategy spotAllocationStrategy = SpotAllocationFactory.getSpotAllocationStrategy(parkingLotRepository);
         ParkingSpot parkingSpot = spotAllocationStrategy.getSpot(vehicleType, gate);
+        parkingSpot.setStatus(Status.NOT_AVAILABLE);
 
         Ticket ticket = new Ticket();
         ticket.setVehicle(new Vehicle(vehicleNumber, vehicleColor, vehicleMake, vehicleType));
         ticket.setEntryTime(LocalDateTime.now());
         ticket.setParkingSpot(parkingSpot);
+        return ticket;
     }
 }
